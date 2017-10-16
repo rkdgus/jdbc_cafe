@@ -1,9 +1,12 @@
 package jdbc_cafe.common;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import java.awt.GridLayout;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
@@ -19,9 +22,16 @@ public class TextFieldCafe extends JPanel {
 		add(lbl);
 		
 		textField = new JTextField();
+		textField.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				
+			}
+		});
 		add(textField);
 		textField.setColumns(10);
-
+		
+		
 	}
 	
 	public void emptyText(){
@@ -32,9 +42,11 @@ public class TextFieldCafe extends JPanel {
 	public void setTextField(String t){
 		textField.setText(t);
 	}
-	private Object getTextField() {
+	public String getTextField() {
 		
 		return textField.getText().trim();
 	}
+	
+
 
 }

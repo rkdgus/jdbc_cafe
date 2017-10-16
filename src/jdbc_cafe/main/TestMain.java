@@ -39,7 +39,7 @@ public class TestMain {
 
 	private static void testCoffeDao() {
 		try {
-			CoffeeDao.getInstance().updateItem(new Coffee("A001", 500, 10, 30));
+			CoffeeDao.getInstance().updateItem(new Coffee("A001","아메리카노", 500, 10, 30));
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

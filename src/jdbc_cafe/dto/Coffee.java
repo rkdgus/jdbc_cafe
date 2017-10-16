@@ -10,12 +10,15 @@ public class Coffee {
 	public Coffee() {
 		// TODO Auto-generated constructor stub
 	}
-	public Coffee(String cofcode, int cost, int salesnum, int margin) {
+
+	public Coffee(String cofcode, String cofname, int cost, int salesnum, int margin) {
 		this.cofcode = cofcode;
+		this.cofname = cofname;
 		this.cost = cost;
 		this.salesnum = salesnum;
 		this.margin = margin;
 	}
+
 	public String getCofcode() {
 		return cofcode;
 	}
@@ -48,8 +51,12 @@ public class Coffee {
 	}
 	@Override
 	public String toString() {
-		return String.format("%s, %s, %s, %s, %s", cofcode, cofname, cost,
-				salesnum, margin);
+		return String.format("%s", cofcode);
+	}
+
+	public String toArray() {
+		
+		return String.format("%s", cofcode);
 	}
 	
 	
