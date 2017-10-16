@@ -1,0 +1,71 @@
+-- db 존재하면 삭제
+drop database if exists java_cafe;
+
+-- db 생성
+create database java_cafe;
+
+-- db 사용
+use java_cafe;
+
+-- 커피테이블
+create table coffee(
+	cofcode varchar(11) not null,
+	cofname varchar(11),
+	cost integer,
+	salesnum integer,
+	margin integer,
+	primary key (cofcode)
+);
+
+-- 카페테이블
+create table cafe(
+	cofcode varchar(11) not null,
+	cofname varchar(11),
+	cost integer,
+	salesnum integer,
+	supply integer,
+	surtex integer,
+	price integer,
+	margin integer,
+	marginprice integer,
+	primary key (cofcode)
+);
+
+drop trigger if exists tri_coffee_after_insert;
+
+delimiter $$
+	create trigger tri_coffee_after_insert
+	after insert
+	on coffee.coffee
+	for each row
+		begin 
+			insert into cafe(cofcode,cofname ,cost ,salesnum ,supply ,surtex ,price ,margin ,marginprice) 
+			values(new.cofcode,new.cofname,new.cost,new.salesnum,
+			(cost*salesnum)-(cost*salesnum)/11,(cost*salesnum)/11,cost*salesnum,new.margin,(cost*salesnum)*(margin/100));
+	end; $$
+delimiter ;
+
+drop trigger if exists tri_coffee_after_update;
+
+delimiter $$
+	create trigger tri_coffee_after_update
+	after update
+	on coffee.coffee
+	for each row
+		begin 
+		update cafe set cost=new.cost,salesnum=new.salesnum,
+			supply=(cost*salesnum)-(cost*salesnum)/11, surtex=(cost*salesnum)/11, price=cost*salesnum, margin=new.margin, marginprice=(cost*salesnum)*(margin/100) where cofcode=new.cofcode; 
+	end; $$
+delimiter ;
+
+insert into coffee values('A001','아메리카노',0,0,0);
+insert into coffee values('A002','카푸치노',0,0,0);
+insert into coffee values('A003','헤이즐넛',0,0,0);
+insert into coffee values('A004','에스프레소',0,0,0);
+insert into coffee values('B001','딸기쉐이크',0,0,0);
+insert into coffee values('B002','후르츠와인',0,0,0);
+insert into coffee values('B003','팥빙수',0,0,0);
+insert into coffee values('B004','아이스초코',0,0,0);
+
+-- create and gran user
+grant select, insert, update, delete on java_cafe.* to 'user_java_cafe' identified by '1234';
