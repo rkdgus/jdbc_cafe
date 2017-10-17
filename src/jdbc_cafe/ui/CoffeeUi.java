@@ -50,8 +50,7 @@ public class CoffeeUi extends JFrame {
 		fl_pBtn.setHgap(10);
 		contentPane.add(pBtn, BorderLayout.SOUTH);
 		
-<<<<<<< HEAD
-=======
+
 		iputCoffeepanel = new InputCoffeePanel(service);
 		contentPane.add(iputCoffeepanel, BorderLayout.CENTER);
 		
@@ -76,7 +75,7 @@ public class CoffeeUi extends JFrame {
 		
 		
 		
->>>>>>> branch 'master' of https://github.com/rkdgus/jdbc_cafe.git
+
 		
 		
 		
