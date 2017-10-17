@@ -47,28 +47,6 @@ public class CoffeeUi extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(0, 1, 10, 10));
 		
-		JPanel panel_1 = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
-		flowLayout.setHgap(10);
-		contentPane.add(panel_1, BorderLayout.SOUTH);
-		
-		JButton btnAdd = new JButton("입력");
-	
-		panel_1.add(btnAdd);
-		
-		JButton btnView1 = new JButton("출력1");
-		
-		panel_1.add(btnView1);
-		
-		JButton btnView2 = new JButton("출력2");
-		
-		panel_1.add(btnView2);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.add(panel_2, BorderLayout.EAST);
-		panel_2.setLayout(new BorderLayout(0, 0));
-		
 		
 		
 		

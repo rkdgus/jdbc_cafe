@@ -2,8 +2,8 @@
 drop database if exists java_cafe;
 
 -- db 생성
-create database java_cafe;
 
+create database java_cafe;
 -- db 사용
 use java_cafe;
 

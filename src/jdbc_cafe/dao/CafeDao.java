@@ -20,6 +20,7 @@ public class CafeDao {
 	public static CafeDao getInstance() {
 		return Instance;
 	}
+	
 	public List<Cafe> selectAll() throws SQLException {
 		List<Cafe> lists = new ArrayList<>();
 		String sql = "select * from cafe";
@@ -34,6 +35,8 @@ public class CafeDao {
 
 		return lists;
 	}
+	
+	
 	
 	private Cafe getCafe(ResultSet rs) throws SQLException {
 		String cofcode=rs.getString(1);
