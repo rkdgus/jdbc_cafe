@@ -6,17 +6,17 @@ public class Cafe {
 	private int cost;
 	private int salesnum;
 	private int supply;
-	private int surtex;
+	private double surtex;
 	private int price;
 	private int margin;
-	private int marginprice;
+	private double marginprice;
 	
 	public Cafe() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cafe(String cofcode, String cofname, int cost, int salesnum, int supply, int surtex, int price, int margin,
-			int marginprice) {
+	public Cafe(String cofcode, String cofname, int cost, int salesnum, int supply, double surtex, int price,
+			int margin, double marginprice) {
 		this.cofcode = cofcode;
 		this.cofname = cofname;
 		this.cost = cost;
@@ -68,11 +68,11 @@ public class Cafe {
 		this.supply = supply;
 	}
 
-	public int getSurtex() {
+	public double getSurtex() {
 		return surtex;
 	}
 
-	public void setSurtex(int surtex) {
+	public void setSurtex(double surtex) {
 		this.surtex = surtex;
 	}
 
@@ -92,20 +92,19 @@ public class Cafe {
 		this.margin = margin;
 	}
 
-	public int getMarginprice() {
+	public double getMarginprice() {
 		return marginprice;
 	}
 
-	public void setMarginprice(int marginprice) {
+	public void setMarginprice(double marginprice) {
 		this.marginprice = marginprice;
 	}
 
 	@Override
 	public String toString() {
 		return String.format(
-				"%s, %s, %s, %s, %s, %s, %s, %s, %s",
+				"Cafe [cofcode=%s, cofname=%s, cost=%s, salesnum=%s, supply=%s, surtex=%s, price=%s, margin=%s, marginprice=%s]",
 				cofcode, cofname, cost, salesnum, supply, surtex, price, margin, marginprice);
 	}
-	
 	
 }

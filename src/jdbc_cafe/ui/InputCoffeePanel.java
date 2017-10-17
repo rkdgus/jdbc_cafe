@@ -3,7 +3,6 @@ package jdbc_cafe.ui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 
@@ -13,7 +12,6 @@ import javax.swing.SwingConstants;
 
 import jdbc_cafe.common.ComboCafe;
 import jdbc_cafe.common.TextFieldCafe;
-import jdbc_cafe.dao.CoffeeDao;
 import jdbc_cafe.dto.Coffee;
 import jdbc_cafe.service.CoffeeService;
 
@@ -57,7 +55,7 @@ public class InputCoffeePanel extends JPanel {
 		tfName.setHorizontalAlignment(SwingConstants.LEFT);
 		panel.add(tfName);
 
-		pCost = new TextFieldCafe("판매수량");
+		pCost = new TextFieldCafe("제품단가");
 		add(pCost);
 
 		pSalesNum = new TextFieldCafe("판매수량");
@@ -71,7 +69,7 @@ public class InputCoffeePanel extends JPanel {
 	}
 
 	private void selectCoffeeName() {
-		Coffee code = comBoBox.getComboboxValue();
+		Coffee code =  comBoBox.getComboboxValue();
 //		String code ="A001";
 		
 		setLbl(service.selectCodeName(code).getCofname());
@@ -90,5 +88,22 @@ public class InputCoffeePanel extends JPanel {
 	public void setLbl(String code) {
 		tfName.setText(code);
 	}
-
+	
+	public void getTf(){
+		Coffee coffee = (Coffee) comBoBox.getComboboxValue();
+		String cofname = tfName.getText();
+		int cost = Integer.parseInt(pCost.getTextField());
+		int salesnum = Integer.parseInt(pSalesNum.getTextField());
+		int margin = Integer.parseInt(pMargin.getTextField());
+		
+		service.updateCoffee(new Coffee(coffee.getCofcode(), cofname, cost, salesnum, margin));
+	}
+	
+	public void clearTf(){
+		comBoBox.setSelected();
+		tfName.setText("");
+		pCost.setTextField("");
+		pSalesNum.setTextField("");
+		pMargin.setTextField("");
+	}
 }

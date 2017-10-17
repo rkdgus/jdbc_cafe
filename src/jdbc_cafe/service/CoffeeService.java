@@ -25,14 +25,25 @@ public class CoffeeService {
 			e.printStackTrace();
 		}
 	}
+	
+	public void updateCoffee(Coffee coffee){
+		try {
+			 coffeeDao.updateItem(coffee);
+			showMessage("입력완료");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 	private void showMessage(String message) {
 		JOptionPane.showMessageDialog(null, message);
 	}
 	
-	public Coffee selectCodeName(Coffee item){
+	public Coffee selectCodeName(Coffee coffee){
 		try {
-			return coffeeDao.selectName(item);
+			return coffeeDao.selectName(coffee);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,6 +51,8 @@ public class CoffeeService {
 		
 		return null;
 	}
+	
+	
 	
 	public List<Coffee> selectAll(){
 		try {
