@@ -18,8 +18,8 @@ public class TestMain {
 //			testCoffeDao();
 			
 		testCafeDao();
+	
 		
-
 	}
 
 	private static void testCafeDao() {
@@ -28,12 +28,14 @@ public class TestMain {
 			
 			for(Cafe c : lists){
 				System.out.println(c);
+			
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
+		
 		
 	}
 

@@ -24,10 +24,10 @@ create table cafe(
 	cost integer,
 	salesnum integer,
 	supply integer,
-	surtex integer,
+	surtex decimal(8,1),
 	price integer,
 	margin integer,
-	marginprice integer,
+	marginprice decimal(8,1),
 	primary key (cofcode)
 );
 

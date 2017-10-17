@@ -33,14 +33,21 @@ public class ComboCafe extends JPanel {
 	}
 
 
+
 	public void setComboboxModel(Vector<Coffee> lists){
 		ComboBoxModel<Coffee> model = new DefaultComboBoxModel<>(lists);
 		comboBox.setModel(model);
 	}
 	
-	@SuppressWarnings("unchecked")
+	
 	public Coffee getComboboxValue(){
 		
-		return (Coffee)comboBox.getSelectedItem();
+		return (Coffee) comboBox.getSelectedItem();
+	}
+
+
+	public void setSelected() {
+		comboBox.setSelectedIndex(0);
+		
 	}
 }

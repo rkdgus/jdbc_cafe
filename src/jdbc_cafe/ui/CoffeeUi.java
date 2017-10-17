@@ -3,7 +3,8 @@ package jdbc_cafe.ui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,6 +18,7 @@ public class CoffeeUi extends JFrame {
 
 	private JPanel contentPane;
 	private CoffeeService service;
+	private InputCoffeePanel iputCoffeepanel;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -32,6 +34,7 @@ public class CoffeeUi extends JFrame {
 	}
 
 	
+	
 	public CoffeeUi() {
 		service = new CoffeeService();
 		setTitle("판매실적 입력창");
@@ -42,32 +45,34 @@ public class CoffeeUi extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		InputCoffeePanel panel = new InputCoffeePanel(service);
-		panel.setBorder(new EmptyBorder(10, 10, 10, 10));
-		contentPane.add(panel);
-		panel.setLayout(new GridLayout(0, 1, 10, 10));
+		JPanel pBtn = new JPanel();
+		FlowLayout fl_pBtn = (FlowLayout) pBtn.getLayout();
+		fl_pBtn.setHgap(10);
+		contentPane.add(pBtn, BorderLayout.SOUTH);
 		
-		JPanel panel_1 = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
-		flowLayout.setHgap(10);
-		contentPane.add(panel_1, BorderLayout.SOUTH);
+		iputCoffeepanel = new InputCoffeePanel(service);
+		contentPane.add(iputCoffeepanel, BorderLayout.CENTER);
 		
 		JButton btnAdd = new JButton("입력");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iputCoffeepanel.getTf();
+				iputCoffeepanel.clearTf();
+			}
+		});
+		
 	
-		panel_1.add(btnAdd);
+		pBtn.add(btnAdd);
 		
 		JButton btnView1 = new JButton("출력1");
 		
-		panel_1.add(btnView1);
+		pBtn.add(btnView1);
 		
 		JButton btnView2 = new JButton("출력2");
 		
-		panel_1.add(btnView2);
+		pBtn.add(btnView2);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.add(panel_2, BorderLayout.EAST);
-		panel_2.setLayout(new BorderLayout(0, 0));
+		
 		
 		
 		

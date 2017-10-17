@@ -14,7 +14,6 @@ public class CafeDao {
 	private static final CafeDao Instance = new CafeDao();
 
 	public CafeDao() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public static CafeDao getInstance() {
@@ -41,10 +40,10 @@ public class CafeDao {
 		int cost = rs.getInt(3);
 		int salesnum = rs.getInt(4);
 		int supply = rs.getInt(5);
-		int surtex = rs.getInt(6);
+		double surtex = rs.getInt(6);
 		int price = rs.getInt(7);
 		int margin = rs.getInt(8);
-		int marginprice = rs.getInt(9);
+		double marginprice = rs.getInt(9);
 		
 		return new Cafe(cofcode, cofname, cost, salesnum, supply, surtex, price, margin, marginprice);
 	}
