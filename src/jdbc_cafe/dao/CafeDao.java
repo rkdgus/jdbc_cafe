@@ -22,9 +22,7 @@ public class CafeDao {
 	
 	public List<Cafe> selectAllPrice() throws SQLException {
 		List<Cafe> lists = new ArrayList<>();
-		String sql = "select * from cafe group by price desc "
-				+ "union "
-				+ "select '합계','','','',sum(supply),sum(surtex),sum(price),'',sum(marginprice) from cafe";
+		String sql = "select * from showlist";
 		
 		Connection con = DBCon.getInstance().getConnection();
 
