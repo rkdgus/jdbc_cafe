@@ -21,10 +21,14 @@ public class CoffeeUi extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private CoffeeService service;
 	private InputCoffeePanel iputCoffeepanel;
+<<<<<<< HEAD
 	private JButton btnView1;
 	private JButton btnView2;
 	private CafeListMain listMain;
 	
+=======
+
+>>>>>>> refs/remotes/origin/master
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -55,7 +59,10 @@ public class CoffeeUi extends JFrame implements ActionListener {
 		fl_pBtn.setHgap(10);
 		contentPane.add(pBtn, BorderLayout.SOUTH);
 		
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/master
 		iputCoffeepanel = new InputCoffeePanel(service);
 		contentPane.add(iputCoffeepanel, BorderLayout.CENTER);
 		
@@ -80,6 +87,10 @@ public class CoffeeUi extends JFrame implements ActionListener {
 		
 		pBtn.add(btnView2);
 		
+<<<<<<< HEAD
+=======
+		
+>>>>>>> refs/remotes/origin/master
 		
 		
 
