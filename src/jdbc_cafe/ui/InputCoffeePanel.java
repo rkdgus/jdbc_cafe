@@ -66,6 +66,7 @@ public class InputCoffeePanel extends JPanel {
 		
 		setCodeModel();
 		
+		
 	}
 
 	private void selectCoffeeName() {
@@ -97,6 +98,12 @@ public class InputCoffeePanel extends JPanel {
 		int margin = Integer.parseInt(pMargin.getTextField());
 		
 		service.updateCoffee(new Coffee(coffee.getCofcode(), cofname, cost, salesnum, margin));
+	}
+	
+	public void isEmpty() throws Exception{
+		pCost.emptyText();
+		pSalesNum.emptyText();
+		pMargin.emptyText();
 	}
 	
 	public void clearTf(){

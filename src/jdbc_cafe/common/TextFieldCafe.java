@@ -5,6 +5,7 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -34,10 +35,11 @@ public class TextFieldCafe extends JPanel {
 		
 	}
 	
-	public void emptyText(){
-		if(getTextField().equals("")){
-			
-		}
+	public void emptyText() throws Exception{
+			if( getTextField().equals("")){
+				textField.requestFocus();
+				throw new Exception("공백존재");
+			}
 	}
 	public void setTextField(String t){
 		textField.setText(t);
