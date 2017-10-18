@@ -25,18 +25,7 @@ public class CoffeeUi extends JFrame implements ActionListener {
 	private JButton btnView2;
 	private CafeListMain listMain;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CoffeeUi frame = new CoffeeUi();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	public CoffeeUi() {
 		service = new CoffeeService();
