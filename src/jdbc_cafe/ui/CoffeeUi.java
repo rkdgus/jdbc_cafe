@@ -11,15 +11,20 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import jdbc_cafe.list.CafeList;
+import jdbc_cafe.service.CafeService;
 import jdbc_cafe.service.CoffeeService;
 
 @SuppressWarnings("serial")
-public class CoffeeUi extends JFrame {
+public class CoffeeUi extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private CoffeeService service;
 	private InputCoffeePanel iputCoffeepanel;
-
+	private JButton btnView1;
+	private JButton btnView2;
+	private CafeListMain listMain;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -65,11 +70,13 @@ public class CoffeeUi extends JFrame {
 	
 		pBtn.add(btnAdd);
 		
-		JButton btnView1 = new JButton("출력1");
+		btnView1 = new JButton("출력1");
+		btnView1.addActionListener(this);
 		
 		pBtn.add(btnView1);
 		
-		JButton btnView2 = new JButton("출력2");
+		btnView2 = new JButton("출력2");
+		btnView2.addActionListener(this);
 		
 		pBtn.add(btnView2);
 		
@@ -83,4 +90,27 @@ public class CoffeeUi extends JFrame {
 	
 	
 
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnView2) {
+			btnView2ActionPerformed(e);
+		}
+		if (e.getSource() == btnView1) {
+			btnView1ActionPerformed(e);
+		}
+	}
+	protected void btnView1ActionPerformed(ActionEvent e) {
+		
+		
+			listMain = new CafeListMain(new CafeList(new CafeService()),"판매금액순위");
+		
+		listMain.setVisible(true);		
+	}
+	
+	
+	protected void btnView2ActionPerformed(ActionEvent e) {
+		
+			listMain = new CafeListMain(new CafeList(new CafeService()),"마진액순위");
+		
+		listMain.setVisible(true);
+	}
 }

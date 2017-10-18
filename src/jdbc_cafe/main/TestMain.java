@@ -24,7 +24,7 @@ public class TestMain {
 
 	private static void testCafeDao() {
 		try {
-			List<Cafe> lists=CafeDao.getInstance().selectAll();
+			List<Cafe> lists=CafeDao.getInstance().selectAllMarginprice();
 			
 			for(Cafe c : lists){
 				System.out.println(c);
