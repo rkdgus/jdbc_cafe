@@ -1,25 +1,42 @@
 package jdbc_cafe.dto;
 
 public class Cafe {
+	private String crank; 
 	private String cofcode; 
 	private String cofname;
-	private int cost;
-	private int salesnum;
-	private int supply;
-	private int surtex;
-	private int price;
-	private int margin;
-	private int marginprice;
+	private String cost;
+	private String salesnum;
+	private String supply;
+	private String surtex;
+	private String price;
+	private String margin;
+	private String marginprice;
 	
-	public Cafe() {
-		// TODO Auto-generated constructor stub
+	
+
+
+
+public String getCrank() {
+		return crank;
 	}
 
-	
-	
-public String getCofcode() {
+
+
+
+
+	public void setCrank(String crank) {
+		this.crank = crank;
+	}
+
+
+
+
+
+	public String getCofcode() {
 		return cofcode;
 	}
+
+
 
 
 
@@ -29,9 +46,13 @@ public String getCofcode() {
 
 
 
+
+
 	public String getCofname() {
 		return cofname;
 	}
+
+
 
 
 
@@ -41,101 +62,134 @@ public String getCofcode() {
 
 
 
-	public int getCost() {
+
+
+	public String getCost() {
 		return cost;
 	}
 
 
 
-	public void setCost(int cost) {
+
+
+	public void setCost(String cost) {
 		this.cost = cost;
 	}
 
 
 
-	public int getSalesnum() {
+
+
+	public String getSalesnum() {
 		return salesnum;
 	}
 
 
 
-	public void setSalesnum(int salesnum) {
+
+
+	public void setSalesnum(String salesnum) {
 		this.salesnum = salesnum;
 	}
 
 
 
-	public int getSupply() {
+
+
+	public String getSupply() {
 		return supply;
 	}
 
 
 
-	public void setSupply(int supply) {
+
+
+	public void setSupply(String supply) {
 		this.supply = supply;
 	}
 
 
 
-	public int getSurtex() {
+
+
+	public String getSurtex() {
 		return surtex;
 	}
 
 
 
-	public void setSurtex(int surtex) {
+
+
+	public void setSurtex(String surtex) {
 		this.surtex = surtex;
 	}
 
 
 
-	public int getPrice() {
+
+
+	public String getPrice() {
 		return price;
 	}
 
 
 
-	public void setPrice(int price) {
+
+
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
 
 
-	public int getMargin() {
+
+
+	public String getMargin() {
 		return margin;
 	}
 
 
 
-	public void setMargin(int margin) {
+
+
+	public void setMargin(String margin) {
 		this.margin = margin;
 	}
 
 
 
-	public int getMarginprice() {
+
+
+	public String getMarginprice() {
 		return marginprice;
 	}
 
 
 
-	public void setMarginprice(int marginprice) {
+
+
+	public void setMarginprice(String marginprice) {
 		this.marginprice = marginprice;
 	}
+
+
 
 
 
 @Override
 	public String toString() {
 		return String.format(
-				"Cafe [cofcode=%s, cofname=%s, cost=%s, salesnum=%s, supply=%s, surtex=%s, price=%s, margin=%s, marginprice=%s]",
-				cofcode, cofname, cost, salesnum, supply, surtex, price, margin, marginprice);
+				"CafeView [crank=%s, cofcode=%s, cofname=%s, cost=%s, salesnum=%s, supply=%s, surtex=%s, price=%s, margin=%s, marginprice=%s]",
+				crank, cofcode, cofname, cost, salesnum, supply, surtex, price, margin, marginprice);
 	}
 
 
 
-public Cafe(String cofcode, String cofname, int cost, int salesnum, int supply, int surtex, int price, int margin,
-			int marginprice) {
+
+
+public Cafe(String crank, String cofcode, String cofname, String cost, String salesnum, String supply,
+			String surtex, String price, String margin, String marginprice) {
+		this.crank = crank;
 		this.cofcode = cofcode;
 		this.cofname = cofname;
 		this.cost = cost;
@@ -149,10 +203,20 @@ public Cafe(String cofcode, String cofname, int cost, int salesnum, int supply, 
 
 
 
+
+
+public Cafe() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+
 public Object[] toArray() {
 		
 		
-		return  new Object[]{cofcode, cofname, cost, salesnum, supply, surtex, price, margin, marginprice};
+		return  new Object[]{crank,cofcode, cofname, cost, salesnum, supply, surtex, price, margin, marginprice};
 	}
 	
 }

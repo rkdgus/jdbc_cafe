@@ -25,7 +25,7 @@ public class CafeList extends TableList{
 	@Override
 	protected Object[] getColumnNames() {
 		
-		return new String[]{"제품코드","제품명","제품단가","판매수량","공급가액","부가세액","판매금액","마진율","마진액"};
+		return new String[]{"순위","제품코드","제품명","제품단가","판매수량","공급가액","부가세액","판매금액","마진율","마진액"};
 	}
 	
 	
