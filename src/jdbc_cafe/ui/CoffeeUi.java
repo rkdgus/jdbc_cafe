@@ -50,12 +50,12 @@ public class CoffeeUi extends JFrame implements ActionListener {
 
 		pBtn.add(btnAdd);
 
-		btnView1 = new JButton("출력1");
+		btnView1 = new JButton("판매액");
 		btnView1.addActionListener(this);
 
 		pBtn.add(btnView1);
 
-		btnView2 = new JButton("출력2");
+		btnView2 = new JButton("마진액");
 		btnView2.addActionListener(this);
 
 		pBtn.add(btnView2);

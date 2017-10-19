@@ -42,8 +42,11 @@ public class CafeList extends TableList {
 		List<Cafe> lists = cafeService.selectAllMarginPrice();
 		Object[][] data = new Object[lists.size()][];
 		for (int i = 0; i < lists.size(); i++) {
-
-			data[i] = lists.get(i).toArray();
+			if(i==lists.size()-1){
+				data[i] = lists.get(i).toArrayByLast();
+			}else{
+				data[i] = lists.get(i).toArray();
+			}
 		}
 
 		return data;
