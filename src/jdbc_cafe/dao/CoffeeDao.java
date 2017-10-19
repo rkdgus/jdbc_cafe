@@ -20,7 +20,7 @@ public class CoffeeDao {
 	public static CoffeeDao getInstance() {
 		return Instance;
 	}
-	
+
 	public void insertItem(Coffee item) throws SQLException {
 		String sql = "insert into coffee values(?,?,?,?,?)";
 		Connection con = DBCon.getInstance().getConnection();
@@ -31,19 +31,19 @@ public class CoffeeDao {
 			pstmt.setInt(3, item.getCost());
 			pstmt.setInt(4, item.getSalesnum());
 			pstmt.setInt(5, item.getMargin());
-			
+
 			pstmt.executeUpdate();
-			
+
 		}
 	}
-	
-	public Coffee selectName(Coffee item) throws SQLException{
+
+	public Coffee selectName(Coffee item) throws SQLException {
 		String sql = "select * from coffee where cofcode=?";
 		Connection con = DBCon.getInstance().getConnection();
 		Coffee coffee = null;
-		try(PreparedStatement pstmt = con.prepareStatement(sql);){
+		try (PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setString(1, item.getCofcode());
-			
+
 			try (ResultSet rs = pstmt.executeQuery();) {
 				if (rs.next()) {
 					coffee = getCoffee(rs);
@@ -51,10 +51,9 @@ public class CoffeeDao {
 			}
 		}
 		return coffee;
-		
+
 	}
-	
-	
+
 	private Coffee getCoffee(ResultSet rs) throws SQLException {
 		String cofcode = rs.getString(1);
 		String cofname = rs.getString(2);
@@ -64,24 +63,22 @@ public class CoffeeDao {
 		return new Coffee(cofcode, cofname, cost, salesnum, margin);
 	}
 
-	public void updateItem(Coffee item) throws SQLException{
+	public void updateItem(Coffee item) throws SQLException {
 		String sql = "update coffee set cost=?, salesnum=?, margin=? where cofcode=?";
 		Connection con = DBCon.getInstance().getConnection();
-		
-		try(PreparedStatement pstmt = con.prepareStatement(sql);){
+
+		try (PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setInt(1, item.getCost());
 			pstmt.setInt(2, item.getSalesnum());
 			pstmt.setInt(3, item.getMargin());
 			pstmt.setString(4, item.getCofcode());
-			
+
 			pstmt.executeUpdate();
-		
-			
+
 		}
-		
+
 	}
-	
-	
+
 	public List<Coffee> selectItemByAll() throws SQLException {
 		List<Coffee> lists = new ArrayList<>();
 		String sql = "select * from coffee";
@@ -96,6 +93,5 @@ public class CoffeeDao {
 
 		return lists;
 	}
-	
 
 }

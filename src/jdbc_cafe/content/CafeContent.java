@@ -91,25 +91,25 @@ public class CafeContent extends JPanel {
 	}
 
 	public void isMatch() throws Exception {
-		Pattern p = Pattern.compile("^[1-9]{1}[0-9]{0,7}$");
+		Pattern p = Pattern.compile("^[0-9]{1,8}$");
 		Matcher m = p.matcher(pCost.getTextField());
 
 		if (!m.find()) {
-			
-			throw new Exception("제품 단가에 정수 8자리를 입력하세요");
+
+			throw new Exception("[제품단가]에 정수 1~8자리를 입력하세요");
 		}
 
 		m = p.matcher(pSalesNum.getTextField());
 
 		if (!m.find()) {
 
-			throw new Exception("판매 수량에 정수 8자리를 입력하세요");
+			throw new Exception("[판매수량]에 정수 1~8자리를 입력하세요");
 		}
-		p = Pattern.compile("^[1-9]{1}[0-9]{0,1}$");
+		p = Pattern.compile("^[0-9]{1,2}$");
 		m = p.matcher(pMargin.getTextField());
 
 		if (!m.find()) {
-			throw new Exception("마진율에 정수 2자리를 입력하세요");
+			throw new Exception("[마진율]에 정수 1~2자리를 입력하세요");
 		}
 	}
 

@@ -11,36 +11,34 @@ import javax.swing.SwingConstants;
 public class TextFieldCafe extends JPanel {
 	private JTextField textField;
 
-
 	public TextFieldCafe(String str) {
 		setLayout(new GridLayout(0, 2, 0, 0));
-		
-		JLabel	lbl = new JLabel(str);
+
+		JLabel lbl = new JLabel(str);
 		lbl.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lbl);
-		
+
 		textField = new JTextField();
-		
+
 		add(textField);
 		textField.setColumns(10);
-		
-		
+
 	}
-	
-	public void emptyText() throws Exception{
-			if( getTextField().equals("")){
-				textField.requestFocus();
-				throw new Exception("공백존재");
-			}
+
+	public void emptyText() throws Exception {
+		if (getTextField().equals("")) {
+			textField.requestFocus();
+			throw new Exception("빈 칸 없이 입력하세요");
+		}
 	}
-	public void setTextField(String t){
+
+	public void setTextField(String t) {
 		textField.setText(t);
 	}
+
 	public String getTextField() {
-		
+
 		return textField.getText().trim();
 	}
-	
-
 
 }

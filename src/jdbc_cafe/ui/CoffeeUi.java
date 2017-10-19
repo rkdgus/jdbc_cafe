@@ -27,8 +27,6 @@ public class CoffeeUi extends JFrame implements ActionListener {
 	private CafeListMain listMain;
 	private JButton btnAdd;
 
-	
-
 	public CoffeeUi() {
 		service = new CoffeeService();
 		setTitle("판매실적 입력창");
@@ -49,8 +47,6 @@ public class CoffeeUi extends JFrame implements ActionListener {
 
 		btnAdd = new JButton("입력");
 		btnAdd.addActionListener(this);
-		
-		
 
 		pBtn.add(btnAdd);
 
@@ -75,7 +71,7 @@ public class CoffeeUi extends JFrame implements ActionListener {
 		}
 		if (e.getSource() == btnAdd) {
 			btnAddActionPerformed(e);
-			
+
 		}
 	}
 
@@ -85,14 +81,14 @@ public class CoffeeUi extends JFrame implements ActionListener {
 			iputCoffeepanel.isMatch();
 			iputCoffeepanel.getTf();
 			iputCoffeepanel.clearTf();
-			
+
 		} catch (Exception e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			return;
 		}
-		
-		
+
 	}
+
 	protected void btnView1ActionPerformed(ActionEvent e) {
 
 		listMain = new CafeListMain(new CafeList(new CafeService()), "판매금액순위");

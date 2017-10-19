@@ -16,7 +16,7 @@ public class CoffeeService {
 		this.coffeeDao = coffeeDao.getInstance();
 	}
 
-	public void insertCoffee(Coffee coffee){
+	public void insertCoffee(Coffee coffee) {
 		try {
 			coffeeDao.insertItem(coffee);
 			showMessage("추가완료");
@@ -25,36 +25,34 @@ public class CoffeeService {
 			e.printStackTrace();
 		}
 	}
-	
-	public void updateCoffee(Coffee coffee){
+
+	public void updateCoffee(Coffee coffee) {
 		try {
-			 coffeeDao.updateItem(coffee);
+			coffeeDao.updateItem(coffee);
 			showMessage("입력완료");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	private void showMessage(String message) {
 		JOptionPane.showMessageDialog(null, message);
 	}
-	
-	public Coffee selectCodeName(Coffee coffee){
+
+	public Coffee selectCodeName(Coffee coffee) {
 		try {
 			return coffeeDao.selectName(coffee);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
-	
-	
-	
-	public List<Coffee> selectAll(){
+
+	public List<Coffee> selectAll() {
 		try {
 			return coffeeDao.selectItemByAll();
 		} catch (SQLException e) {
