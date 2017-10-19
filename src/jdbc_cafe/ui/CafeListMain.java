@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 
 import jdbc_cafe.list.TableList;
 
+@SuppressWarnings("serial")
 public class CafeListMain extends JFrame {
 
 	private JPanel contentPane;

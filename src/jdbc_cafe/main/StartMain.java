@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import jdbc_cafe.ui.CoffeeUi;
 
 public class StartMain {
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
