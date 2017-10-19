@@ -116,6 +116,11 @@ public class Cafe {
 	public Cafe() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Object[] toArrayByLast() {
+
+		return new Object[] { crank, "", "", "", "", supply, surtex, price, "", marginprice };
+	}
 
 	public Object[] toArray() {
 

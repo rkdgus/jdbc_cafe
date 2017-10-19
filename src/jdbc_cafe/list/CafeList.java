@@ -2,6 +2,8 @@ package jdbc_cafe.list;
 
 import java.util.List;
 
+import javax.swing.SwingConstants;
+
 import jdbc_cafe.dto.Cafe;
 import jdbc_cafe.service.CafeService;
 
@@ -18,8 +20,13 @@ public class CafeList extends TableList {
 		List<Cafe> lists = cafeService.selectAllPrice();
 		Object[][] data = new Object[lists.size()][];
 		for (int i = 0; i < lists.size(); i++) {
-
-			data[i] = lists.get(i).toArray();
+			if(i==lists.size()-1){
+				data[i] = lists.get(i).toArrayByLast();
+			}else{
+				data[i] = lists.get(i).toArray();
+			}
+			
+			
 		}
 		return data;
 	}
@@ -41,6 +48,14 @@ public class CafeList extends TableList {
 
 		return data;
 
+	}
+
+	@Override
+	protected void setAlignWidth() {
+		setAlign(SwingConstants.CENTER, 0,1,2,8);
+		setAlign(SwingConstants.RIGHT, 3,4,5,6,7,9);
+		setCellWidth(50,80,100,80,80,150,100,150,50,100);
+		
 	}
 
 }

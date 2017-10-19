@@ -70,7 +70,7 @@ public class CafeDao {
 		String surtex = String.format("%,d", rs.getInt(7)) ;
 		String price = String.format("%,d", rs.getInt(8)) ;
 		String margin = String.format("%,d", rs.getInt(9)) ;
-		String marginprice = String.format("%,d", rs.getInt(10)) ;
+		String marginprice = rs.getString(10);
 		
 		return new Cafe(crank, cofcode, cofname, cost, salesnum, supply, surtex, price, margin, marginprice);
 	}
