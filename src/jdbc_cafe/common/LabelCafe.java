@@ -17,13 +17,13 @@ public class LabelCafe extends JPanel {
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblName);
 
-		lblGetName = new JLabel("");
+		lblGetName = new JLabel("제품코드 선택");
 		add(lblGetName);
 
 	}
 
 	public void emptyText() throws Exception {
-		if (getLabel().equals("")) {
+		if (getLabel().equals("제품코드 선택")) {
 			throw new Exception("제품코드를 선택하세요");
 		}
 	}

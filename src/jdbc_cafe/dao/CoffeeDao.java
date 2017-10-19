@@ -14,7 +14,6 @@ public class CoffeeDao {
 	private static final CoffeeDao Instance = new CoffeeDao();
 
 	public CoffeeDao() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public static CoffeeDao getInstance() {
@@ -90,7 +89,6 @@ public class CoffeeDao {
 				lists.add(getCoffee(rs));
 			}
 		}
-
 		return lists;
 	}
 
