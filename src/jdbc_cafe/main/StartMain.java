@@ -2,10 +2,12 @@ package jdbc_cafe.main;
 
 import java.awt.EventQueue;
 
+import javax.swing.JOptionPane;
+
 import jdbc_cafe.ui.CoffeeUi;
 
 public class StartMain {
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -13,7 +15,8 @@ public class StartMain {
 					CoffeeUi frame = new CoffeeUi();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, e.getMessage());
+
 				}
 			}
 		});

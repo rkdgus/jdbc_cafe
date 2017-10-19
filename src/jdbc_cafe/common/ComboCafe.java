@@ -32,7 +32,7 @@ public class ComboCafe extends JPanel {
 		return comboBox;
 	}
 
-
+	
 
 	public void setComboboxModel(Vector<Coffee> lists){
 		ComboBoxModel<Coffee> model = new DefaultComboBoxModel<>(lists);

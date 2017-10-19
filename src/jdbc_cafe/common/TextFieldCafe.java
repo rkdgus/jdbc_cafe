@@ -1,8 +1,6 @@
 package jdbc_cafe.common;
 
 import java.awt.GridLayout;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,12 +20,7 @@ public class TextFieldCafe extends JPanel {
 		add(lbl);
 		
 		textField = new JTextField();
-		textField.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusLost(FocusEvent e) {
-				
-			}
-		});
+		
 		add(textField);
 		textField.setColumns(10);
 		

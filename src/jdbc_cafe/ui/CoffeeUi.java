@@ -7,9 +7,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import jdbc_cafe.content.CafeContent;
 import jdbc_cafe.list.CafeList;
 import jdbc_cafe.service.CafeService;
 import jdbc_cafe.service.CoffeeService;
@@ -19,10 +21,11 @@ public class CoffeeUi extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private CoffeeService service;
-	private InputCoffeePanel iputCoffeepanel;
+	private CafeContent iputCoffeepanel;
 	private JButton btnView1;
 	private JButton btnView2;
 	private CafeListMain listMain;
+	private JButton btnAdd;
 
 	
 
@@ -41,22 +44,13 @@ public class CoffeeUi extends JFrame implements ActionListener {
 		fl_pBtn.setHgap(10);
 		contentPane.add(pBtn, BorderLayout.SOUTH);
 
-		iputCoffeepanel = new InputCoffeePanel(service);
+		iputCoffeepanel = new CafeContent(service);
 		contentPane.add(iputCoffeepanel, BorderLayout.CENTER);
 
-		JButton btnAdd = new JButton("입력");
-		btnAdd.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					iputCoffeepanel.isEmpty();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				iputCoffeepanel.getTf();
-				iputCoffeepanel.clearTf();
-			}
-		});
+		btnAdd = new JButton("입력");
+		btnAdd.addActionListener(this);
+		
+		
 
 		pBtn.add(btnAdd);
 
@@ -79,8 +73,26 @@ public class CoffeeUi extends JFrame implements ActionListener {
 		if (e.getSource() == btnView1) {
 			btnView1ActionPerformed(e);
 		}
+		if (e.getSource() == btnAdd) {
+			btnAddActionPerformed(e);
+			
+		}
 	}
 
+	private void btnAddActionPerformed(ActionEvent e) {
+		try {
+			iputCoffeepanel.isEmpty();
+			iputCoffeepanel.isMatch();
+			iputCoffeepanel.getTf();
+			iputCoffeepanel.clearTf();
+			
+		} catch (Exception e1) {
+			JOptionPane.showMessageDialog(null, e1.getMessage());
+			return;
+		}
+		
+		
+	}
 	protected void btnView1ActionPerformed(ActionEvent e) {
 
 		listMain = new CafeListMain(new CafeList(new CafeService()), "판매금액순위");

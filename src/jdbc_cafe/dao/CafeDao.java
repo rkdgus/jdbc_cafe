@@ -60,19 +60,17 @@ public class CafeDao {
 	
 	
 	
-	
-	
 	private Cafe getCafe(ResultSet rs) throws SQLException {
 		String crank=rs.getString(1);
 		String cofcode=rs.getString(2);
 		String cofname = rs.getString(3);
-		String cost = rs.getString(4);
-		String salesnum = rs.getString(5);
-		String supply = rs.getString(6);
-		String surtex = rs.getString(7);
-		String price = rs.getString(8);
-		String margin = rs.getString(9);
-		String marginprice = rs.getString(10);
+		String cost = String.format("%,d", rs.getInt(4)) ;
+		String salesnum = String.format("%,d", rs.getInt(5)) ;
+		String supply = String.format("%,d", rs.getInt(6)) ;
+		String surtex = String.format("%,d", rs.getInt(7)) ;
+		String price = String.format("%,d", rs.getInt(8)) ;
+		String margin = String.format("%,d", rs.getInt(9)) ;
+		String marginprice = String.format("%,d", rs.getInt(10)) ;
 		
 		return new Cafe(crank, cofcode, cofname, cost, salesnum, supply, surtex, price, margin, marginprice);
 	}
