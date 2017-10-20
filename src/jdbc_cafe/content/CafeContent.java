@@ -8,22 +8,32 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import jdbc_cafe.common.ComboCafe;
 import jdbc_cafe.common.LabelCafe;
 import jdbc_cafe.common.TextFieldCafe;
 import jdbc_cafe.dto.Coffee;
+import jdbc_cafe.list.CafeList;
+import jdbc_cafe.service.CafeService;
 import jdbc_cafe.service.CoffeeService;
+import jdbc_cafe.ui.CafeListMain;
 
 @SuppressWarnings("serial")
-public class CafeContent extends JPanel {
+public class CafeContent extends JPanel implements ActionListener {
 	private TextFieldCafe pCost;
 	private TextFieldCafe pSalesNum;
 	private TextFieldCafe pMargin;
 	private LabelCafe lblName;
 	private ComboCafe comBoBox;
 	private CoffeeService service;
+	private JPanel panel;
+	private JButton btnAdd;
+	private JButton btnView1;
+	private JButton btnView2;
+	private CafeListMain listMain;
 
 	public CafeContent(CoffeeService service) {
 		this.service = service;
@@ -53,6 +63,22 @@ public class CafeContent extends JPanel {
 
 		pMargin = new TextFieldCafe("마 진 율");
 		add(pMargin);
+		
+		panel = new JPanel();
+		add(panel);
+		
+		btnAdd = new JButton("입력");
+		btnAdd.addActionListener(this);
+		panel.setLayout(new GridLayout(0, 3, 5, 10));
+		panel.add(btnAdd);
+		
+		btnView1 = new JButton("판매금액 순");
+		btnView1.addActionListener(this);
+		panel.add(btnView1);
+		
+		btnView2 = new JButton("마진액 순");
+		btnView2.addActionListener(this);
+		panel.add(btnView2);
 
 		setCodeModel();
 
@@ -119,5 +145,45 @@ public class CafeContent extends JPanel {
 		pCost.setTextField("");
 		pSalesNum.setTextField("");
 		pMargin.setTextField("");
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnAdd) {
+			btnAddActionPerformed(e);
+		}
+		if (e.getSource() == btnView2) {
+			btnView2ActionPerformed(e);
+		}
+		if (e.getSource() == btnView1) {
+			btnView1ActionPerformed(e);
+		}
+	}
+	
+	
+	private void btnAddActionPerformed(ActionEvent e) {
+		try {
+			isEmpty();
+			isMatch();
+			getTf();
+			clearTf();
+
+		} catch (Exception e1) {
+			JOptionPane.showMessageDialog(null, e1.getMessage());
+			return;
+		}
+
+	}
+
+	protected void btnView1ActionPerformed(ActionEvent e) {
+
+		listMain = new CafeListMain(new CafeList(new CafeService()), "판매금액순위");
+
+		listMain.setVisible(true);
+	}
+
+	protected void btnView2ActionPerformed(ActionEvent e) {
+
+		listMain = new CafeListMain(new CafeList(new CafeService()), "마진액순위");
+
+		listMain.setVisible(true);
 	}
 }
