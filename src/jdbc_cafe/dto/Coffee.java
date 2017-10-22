@@ -18,6 +18,12 @@ public class Coffee {
 		this.salesnum = salesnum;
 		this.margin = margin;
 	}
+	
+	
+	
+	public Coffee(String cofcode) {
+		this.cofcode = cofcode;
+	}
 
 	public String getCofcode() {
 		return cofcode;

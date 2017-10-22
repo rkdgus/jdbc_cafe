@@ -36,6 +36,8 @@ public class ComboCafe extends JPanel {
 		ComboBoxModel<Coffee> model = new DefaultComboBoxModel<>(lists);
 		comboBox.setModel(model);
 	}
+	
+	
 
 	public Coffee getComboboxValue() {
 

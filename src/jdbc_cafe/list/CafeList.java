@@ -11,10 +11,11 @@ import jdbc_cafe.service.CafeService;
 public class CafeList extends TableList {
 	private CafeService cafeService;
 
-	public CafeList(CafeService cafeService) {
+	public CafeList(CafeService cafeService,String str) {
+		super(str);
 		this.cafeService = cafeService;
 	}
-
+	
 	@Override
 	protected Object[][] getDataPrice() {
 		List<Cafe> lists = cafeService.selectAllPrice();

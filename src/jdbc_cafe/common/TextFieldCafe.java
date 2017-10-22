@@ -36,9 +36,12 @@ public class TextFieldCafe extends JPanel {
 		textField.setText(t);
 	}
 
+	public JTextField textField() {
+		return textField;
+	}
+
 	public String getTextField() {
 
 		return textField.getText().trim();
 	}
-
 }

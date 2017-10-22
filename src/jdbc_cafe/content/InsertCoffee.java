@@ -1,6 +1,6 @@
 package jdbc_cafe.content;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,49 +8,64 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import jdbc_cafe.common.TextFieldCafe;
 import jdbc_cafe.dto.Coffee;
 import jdbc_cafe.service.CoffeeService;
 
 @SuppressWarnings("serial")
-public class CreateCoffee extends AbstractContent implements ActionListener {
+public class InsertCoffee extends AbstractContent implements ActionListener {
 	private JButton btnAdd;
 	private CoffeeService service;
 	private TextFieldCafe pCode;
 	private TextFieldCafe pName;
+	private JButton btnDelete;
 	
-	public CreateCoffee(CoffeeService service) {
+	public InsertCoffee(CoffeeService service) {
+		setForeground(Color.WHITE);
 		this.service = service;
 		setLayout(new GridLayout(0, 1, 5, 5));
 		
-		pCode = new TextFieldCafe("신 제품코드");
+		pCode = new TextFieldCafe("제품코드");
 		add(pCode);
 		
-		pName = new TextFieldCafe("신 제품명");
+		pName = new TextFieldCafe("제품명");
 		add(pName);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		add(panel_2);
-		panel_2.setLayout(new BorderLayout(0, 0));
+		panel_2.setLayout(new GridLayout(1, 1, 5, 5));
 		
 		btnAdd = new JButton("추가");
 		btnAdd.addActionListener(this);
 		panel_2.add(btnAdd);
+		
+		btnDelete = new JButton("취소");
+		btnDelete.addActionListener(this);
+		panel_2.add(btnDelete);
 		
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnAdd) {
 			btnAddActionPerformed(e);
+		}if (e.getSource() == btnDelete) {
+			btnDeleteActionPerformed(e);
 		}
 	}
+	private void btnDeleteActionPerformed(ActionEvent e) {
+		clearTf();
+		
+	}
+
 	protected void btnAddActionPerformed(ActionEvent e) {
 		try {
 			isEmpty();
 			getTf();
 			clearTf();
-
+			
 		} catch (Exception e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			
@@ -65,10 +80,6 @@ public class CreateCoffee extends AbstractContent implements ActionListener {
 		
 	}
 
-	@Override
-	public void isMatch() throws Exception {
-		
-	}
 
 	@Override
 	public void isEmpty() throws Exception {
@@ -87,4 +98,6 @@ public class CreateCoffee extends AbstractContent implements ActionListener {
 		service.insertCoffee(new Coffee(cofcode, cofname, cost, salesnum, margin));
 		
 	}
+	
+	
 }

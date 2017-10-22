@@ -77,6 +77,19 @@ public class CoffeeDao {
 		}
 
 	}
+	
+	public void deleteItem(Coffee item) throws SQLException {
+		String sql = "delete from coffee where cofcode=?";
+		Connection con = DBCon.getInstance().getConnection();
+
+		try (PreparedStatement pstmt = con.prepareStatement(sql);) {
+			pstmt.setString(1, item.getCofcode());
+
+			pstmt.executeUpdate();
+
+		}
+
+	}
 
 	public List<Coffee> selectItemByAll() throws SQLException {
 		List<Coffee> lists = new ArrayList<>();

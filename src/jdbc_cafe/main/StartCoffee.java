@@ -2,21 +2,17 @@ package jdbc_cafe.main;
 
 import java.awt.EventQueue;
 
-import javax.swing.JOptionPane;
+import jdbc_cafe.ui.InsertCoffeeFrame;
 
-import jdbc_cafe.ui.CoffeeUi;
-
-public class StartMain {
-
+public class StartCoffee {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CoffeeUi frame = new CoffeeUi();
+					InsertCoffeeFrame frame = new InsertCoffeeFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					JOptionPane.showMessageDialog(null, e.getMessage());
-
+					e.printStackTrace();
 				}
 			}
 		});

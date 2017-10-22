@@ -36,6 +36,17 @@ public class CoffeeService {
 		}
 
 	}
+	
+	public void deleteCoffee(Coffee coffee) {
+		try {
+			coffeeDao.deleteItem(coffee);
+			showMessage("삭제완료");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 
 	private void showMessage(String message) {
 		JOptionPane.showMessageDialog(null, message);

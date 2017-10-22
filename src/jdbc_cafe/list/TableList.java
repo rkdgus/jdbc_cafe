@@ -8,12 +8,15 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
 public abstract class TableList extends JPanel {
 	private JTable table;
 
-	public TableList() {
+	public TableList(String str) {
 		setLayout(new BorderLayout(0, 0));
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -21,6 +24,14 @@ public abstract class TableList extends JPanel {
 
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new EmptyBorder(5, 0, 5, 0));
+		add(panel, BorderLayout.NORTH);
+		
+		JLabel lblTitle = new JLabel(str);
+		lblTitle.setFont(new Font("굴림", Font.BOLD, 24));
+		panel.add(lblTitle);
 
 	}
 
