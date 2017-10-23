@@ -51,7 +51,7 @@ public class InsertCoffeeFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				panel.clearTf();
 				if(Finsert==null){
-					Finsert = new InsertCodeFrame();
+					Finsert = new InsertCodeFrame(panel.getComBoBox());
 				}
 				Finsert.setVisible(true);
 				

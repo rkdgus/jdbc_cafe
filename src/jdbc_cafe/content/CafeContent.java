@@ -38,6 +38,10 @@ public class CafeContent extends JPanel implements ActionListener {
 	
 	
 
+	public ComboCafe getComBoBox() {
+		return comBoBox;
+	}
+
 	public JButton getBtnAdd() {
 		return btnAdd;
 	}

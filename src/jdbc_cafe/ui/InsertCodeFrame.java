@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import jdbc_cafe.common.ComboCafe;
 import jdbc_cafe.content.InsertCoffee;
 import jdbc_cafe.service.CoffeeService;
 
@@ -14,10 +15,11 @@ public class InsertCodeFrame extends JFrame {
 
 	private JPanel contentPane;
 	private CoffeeService service;
-
+	private ComboCafe comBoBox;
 
 	
-	public InsertCodeFrame() {
+	public InsertCodeFrame(ComboCafe comBoBox) {
+		this.comBoBox = comBoBox;
 		setTitle("신제품 입력창");
 		service = new CoffeeService();
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -27,8 +29,11 @@ public class InsertCodeFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		InsertCoffee panel = new InsertCoffee(service);
+		InsertCoffee panel = new InsertCoffee(service,comBoBox);
 		contentPane.add(panel, BorderLayout.CENTER);
 	}
+
+
+	
 
 }

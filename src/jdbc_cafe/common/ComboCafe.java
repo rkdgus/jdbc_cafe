@@ -1,6 +1,8 @@
 package jdbc_cafe.common;
 
 import java.awt.GridLayout;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.ComboBoxModel;
@@ -10,10 +12,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import jdbc_cafe.dao.CafeDao;
+import jdbc_cafe.dao.CoffeeDao;
 import jdbc_cafe.dto.Coffee;
 
 @SuppressWarnings("serial")
 public class ComboCafe extends JPanel {
+	
 	private JComboBox<Coffee> comboBox;
 
 	public ComboCafe(String name) {
@@ -37,7 +42,20 @@ public class ComboCafe extends JPanel {
 		comboBox.setModel(model);
 	}
 	
-	
+	public void setCodeModel() {
+		List<Coffee> lists;
+		try {
+			lists = CoffeeDao.getInstance().selectItemByAll();
+			Vector<Coffee> coffee = new Vector<>(lists);
+			setComboboxModel(coffee);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+		
+	}
 
 	public Coffee getComboboxValue() {
 

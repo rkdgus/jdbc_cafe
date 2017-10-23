@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import jdbc_cafe.common.ComboCafe;
 import jdbc_cafe.common.TextFieldCafe;
 import jdbc_cafe.dto.Coffee;
 import jdbc_cafe.service.CoffeeService;
@@ -21,8 +22,11 @@ public class InsertCoffee extends AbstractContent implements ActionListener {
 	private TextFieldCafe pCode;
 	private TextFieldCafe pName;
 	private JButton btnDelete;
+	private ComboCafe comBoBox;
 	
-	public InsertCoffee(CoffeeService service) {
+	
+	public InsertCoffee(CoffeeService service,ComboCafe comBoBox) {
+		this.comBoBox = comBoBox;
 		setForeground(Color.WHITE);
 		this.service = service;
 		setLayout(new GridLayout(0, 1, 5, 5));
@@ -65,6 +69,7 @@ public class InsertCoffee extends AbstractContent implements ActionListener {
 			isEmpty();
 			getTf();
 			clearTf();
+			comBoBox.setCodeModel();
 			
 		} catch (Exception e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
