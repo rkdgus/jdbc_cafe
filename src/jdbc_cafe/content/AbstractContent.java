@@ -10,6 +10,8 @@ public abstract class AbstractContent extends JPanel {
 
 	public abstract void isEmpty() throws Exception;
 
+	public abstract void isMatch() throws Exception;
+	
 	public abstract void getTf();
 
 }

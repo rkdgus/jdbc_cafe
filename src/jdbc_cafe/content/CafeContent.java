@@ -3,14 +3,13 @@ package jdbc_cafe.content;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
-import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import jdbc_cafe.common.ComboCafe;
 import jdbc_cafe.common.LabelCafe;
@@ -20,7 +19,6 @@ import jdbc_cafe.list.CafeList;
 import jdbc_cafe.service.CafeService;
 import jdbc_cafe.service.CoffeeService;
 import jdbc_cafe.ui.CafeListTableFrame;
-import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
 public class CafeContent extends JPanel implements ActionListener {
@@ -35,8 +33,6 @@ public class CafeContent extends JPanel implements ActionListener {
 	private JButton btnCancel;
 	private JButton btnView;
 	private CafeListTableFrame listMain;
-	
-	
 
 	public ComboCafe getComBoBox() {
 		return comBoBox;
@@ -92,7 +88,7 @@ public class CafeContent extends JPanel implements ActionListener {
 		btnView.addActionListener(this);
 		panel.add(btnView);
 
-		setCodeModel();
+		comBoBox.setCodeModel();
 
 	}
 
@@ -102,13 +98,6 @@ public class CafeContent extends JPanel implements ActionListener {
 
 		lblName.setLabel(service.selectCodeName(code).getCofname());
 
-	}
-
-	public void setCodeModel() {
-		List<Coffee> lists = service.selectAll();
-		Vector<Coffee> coffee = new Vector<>(lists);
-
-		comBoBox.setComboboxModel(coffee);
 	}
 
 	public void updateCoffee() {
@@ -161,14 +150,12 @@ public class CafeContent extends JPanel implements ActionListener {
 		pSalesNum.setTextField("");
 		pMargin.setTextField("");
 	}
-	
+
 	public void isEnable(boolean ok) {
 		pCost.textField().setEnabled(ok);
 		pSalesNum.textField().setEnabled(ok);
 		pMargin.textField().setEnabled(ok);
 	}
-	
-	
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("입력")) {
@@ -186,11 +173,11 @@ public class CafeContent extends JPanel implements ActionListener {
 	}
 
 	private void btnDeleteActionPerformed(ActionEvent e) {
-		
+
 		try {
 			deleteCode();
 			clearTf();
-			setCodeModel();
+			comBoBox.setCodeModel();
 
 		} catch (Exception e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
@@ -198,21 +185,16 @@ public class CafeContent extends JPanel implements ActionListener {
 		}
 	}
 
-	
-
-
-
 	private void btnCancelActionPerformed(ActionEvent e) {
 		clearTf();
 
 	}
 
 	private void btnViewActionPerformed(ActionEvent e) {
-		
-			listMain = new CafeListTableFrame(new CafeList(new CafeService(), "판매금액 순위"),
-					new CafeList(new CafeService(), "마진액 순위"));
-		
-		
+
+		listMain = new CafeListTableFrame(new CafeList(new CafeService(), "판매금액 순위"),
+				new CafeList(new CafeService(), "마진액 순위"));
+
 		listMain.setVisible(true);
 
 	}

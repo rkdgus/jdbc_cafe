@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -16,7 +18,7 @@ import jdbc_cafe.dto.Coffee;
 import jdbc_cafe.service.CoffeeService;
 
 @SuppressWarnings("serial")
-public class InsertCoffee extends AbstractContent implements ActionListener {
+public class InsertCoffeeContent extends AbstractContent implements ActionListener {
 	private JButton btnAdd;
 	private CoffeeService service;
 	private TextFieldCafe pCode;
@@ -25,7 +27,7 @@ public class InsertCoffee extends AbstractContent implements ActionListener {
 	private ComboCafe comBoBox;
 	
 	
-	public InsertCoffee(CoffeeService service,ComboCafe comBoBox) {
+	public InsertCoffeeContent(CoffeeService service,ComboCafe comBoBox) {
 		this.comBoBox = comBoBox;
 		setForeground(Color.WHITE);
 		this.service = service;
@@ -67,6 +69,7 @@ public class InsertCoffee extends AbstractContent implements ActionListener {
 	protected void btnAddActionPerformed(ActionEvent e) {
 		try {
 			isEmpty();
+			isMatch();
 			getTf();
 			clearTf();
 			comBoBox.setCodeModel();
@@ -101,6 +104,24 @@ public class InsertCoffee extends AbstractContent implements ActionListener {
 		int salesnum =0;
 		int margin = 0;
 		service.insertCoffee(new Coffee(cofcode, cofname, cost, salesnum, margin));
+		
+	}
+
+	@Override
+	public void isMatch() throws Exception {
+		Pattern p = Pattern.compile("^[a-zA-Z0-9]{1,8}$");
+		Matcher m = p.matcher(pCode.getTextField());
+
+		if (!m.find()) {
+			throw new Exception("[제품코드]에 1~8자리를 입력하세요");
+		}
+
+		m = p.matcher(pName.getTextField());
+
+		if (!m.find()) {
+			throw new Exception("[제품명]에 1~8자리를 입력하세요");
+		}
+	
 		
 	}
 	

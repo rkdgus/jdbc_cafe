@@ -12,13 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import jdbc_cafe.dao.CafeDao;
 import jdbc_cafe.dao.CoffeeDao;
 import jdbc_cafe.dto.Coffee;
 
 @SuppressWarnings("serial")
 public class ComboCafe extends JPanel {
-	
+
 	private JComboBox<Coffee> comboBox;
 
 	public ComboCafe(String name) {
@@ -41,7 +40,7 @@ public class ComboCafe extends JPanel {
 		ComboBoxModel<Coffee> model = new DefaultComboBoxModel<>(lists);
 		comboBox.setModel(model);
 	}
-	
+
 	public void setCodeModel() {
 		List<Coffee> lists;
 		try {
@@ -52,9 +51,7 @@ public class ComboCafe extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
-		
 	}
 
 	public Coffee getComboboxValue() {
